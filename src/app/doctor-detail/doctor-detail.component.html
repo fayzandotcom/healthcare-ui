@@ -1,0 +1,71 @@
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="blue">
+                    <h4 class="title">Doctor Search</h4>
+                    <p class="category">Datails of doctor</p>
+                </div>
+                <div class="card-content">
+                    <alert></alert>
+                    <div class="row"> 
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Title</label>
+                                <input type="text" class="form-control" name="title" [(ngModel)]="model.title" #title="ngModel" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="control-label">Gender</label>
+                                <input type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Bio</label>
+                                <textarea class="form-control" name="bio" [(ngModel)]="model.bio" #bio="ngModel" rows=8 disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="practices?.length > 0">
+                        <table class="table">
+                            <thead class="text-success">
+                                <tr>
+                                    <th><strong>Name</strong></th>
+                                    <th><strong>Email</strong></th>
+                                    <th><strong>Address</strong></th>
+                                    <th><strong>Contact</strong></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let row of practices">
+                                    <td>{{row.name}}</td>
+                                    <td>{{row.email}}</td>
+                                    <td>{{row.visit_address.street}} {{row.visit_address.city}} {{row.visit_address.state}}</td>
+                                    <td>
+                                        <ul *ngFor="let item of row.phones">
+                                            <span>{{item.number}} ({{item.type}})</span>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-success pull-right" (click)="goBack()">Back</button>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

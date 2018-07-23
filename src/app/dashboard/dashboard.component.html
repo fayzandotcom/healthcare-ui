@@ -1,0 +1,99 @@
+<div class="main-content">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="blue">
+                            <h4 class="title">Search Doctor</h4>
+                        </div>
+                        <div class="card-content">
+                            <alert></alert>
+                            <form name="formSearch" (ngSubmit)="formSearch.form.valid && search('0', '10')" #formSearch="ngForm" novalidate>
+                                <div class="row"> 
+                                    <div class="col-md-5">
+                                        <div class="form-group form-black label-floating is-empty" [ngClass]="{ 'has-error': formSearch.submitted && !keyword.valid }">
+                                            <label class="control-label">Search keyword</label>
+                                            <input type="text" class="form-control" name="keyword" [(ngModel)]="model.keyword" #keyword="ngModel" required>
+                                            <div *ngIf="formSearch.submitted && !keyword.valid" class="help-block">Keyword is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button type="submit" class="btn btn-success">Search</button>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                        <div class="card-content" *ngIf="tableData?.length > 0">
+                            <div class="row">
+                                <table class="table">
+                                    <thead class="text-success">
+                                        <tr>
+                                            <th><strong>Title</strong></th>
+                                            <th><strong>Name</strong></th>
+                                            <th><strong>Gender</strong></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let row of tableData">
+                                            <td>{{row.profile.title}}</td>
+                                            <td>{{row.profile.first_name}} {{row.profile.last_name}}</td>
+                                            <td>{{row.profile.gender}}</td>
+                                            <td>
+                                                <a [routerLink]="[this.getDoctorDetailDetailLink(row.uid)]"
+                                                class="btn btn-success btn-sm">Detail</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                Showing {{metaData.skip+1}} - {{metaData.skip+metaData.limit}} of {{metaData.total}}
+                                <button class="btn btn-success btn-sm" (click)="search(metaData.skip-metaData.limit, metaData.limit)" [disabled]="metaData.skip==0">Previous</button>
+                                <button class="btn btn-success btn-sm" (click)="search(metaData.skip+metaData.limit, metaData.limit)" [disabled]="metaData.skip+metaData.limit==metaData.total">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" data-background-color="blue">
+                            <h4 class="title">Buyer Feedback</h4>
+                            <p class="category">Last 10 unread messages. <a href="/author-admin/buyer-feedback">View More</a></p>
+                        </div>
+                        <div class="card-content">
+                            <table class="table">
+                                <thead class="text-success">
+                                    <tr>
+                                        <th><strong>Date</strong></th>
+                                        <th><strong>Purchase Code</strong></th>
+                                        <th><strong>Status</strong></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of tableData">
+                                        <td>{{row.created_date}}</td>
+                                        <td>{{row.purchase_code}}</td>
+                                        <td>
+                                            <span *ngIf="row.status==0">Unread</span>
+                                            <span *ngIf="row.status==1">Read</span>
+                                            <span *ngIf="row.status==2">Resolved</span>
+                                        </td>
+                                        <th><a href="/author-admin/buyer-feedback/{{row.id}}">Detail</a></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+        </div>
+    
+</div>
