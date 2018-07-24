@@ -1,8 +1,20 @@
+# Healthcare System
+
+Healthcare system is designed to provide details of the doctors. Users of the system can search doctors through keyword and location. System will search and fetch details of doctors from BetterDoctor API (https://developer.betterdoctor.com/documentation15)
+
 # Healthcare UI
 
 Web UI for healthcare system where users can search for doctors and view their details.
 
 Web services consumed in this project can be find here https://github.com/fayzandotcom/healthcare-api
+
+## Description
+
+### Platform/Framework
+
+- Angular 5
+- TypeScript 2.5.3
+- Bootstrap 3
 
 ## Application demo 
 
@@ -15,14 +27,6 @@ Login Details
 email=fayzan@hotmail.com
 
 password=fayzan
-
-## Description
-
-### Platform/Framework
-
-- Angular 5
-- TypeScript 2.5.3
-- Bootstrap 3
 
 ## Build and Run
 
